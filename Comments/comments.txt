@@ -1,0 +1,49 @@
+Two ways to connect to a database
+1. regular connection
+	There is no timeout to close the connection. So, if a servlet crashes, then the 
+	connection will not be closed.
+	Also, there is no connection pooling.
+	
+	When a dynamic web page needs to access the database and uses a connection without 
+	connection pooling.
+	
+	It opens a connection to the database and closes the connection once it is done.
+	The connection is opened and closed in the doGet or doPost method itself.
+	If there are multiple request at the same time, then multiple connections to the 
+	database will be opened one each by the doGet/doPost methods in the threads in the
+	 pool of threads servicing requests. 
+	
+	The database connection should not be opened in the init() method.  What happens then
+	is that only one connection is opened for the servlet and when multiple request are 
+	made at the same time, the separate threads in the thread pool servicing requests 
+	may be refused when they attempt to get the single connection to the database as
+	 it may be in use already.
+2. JNDI data source - 
+	Uses connection pooling. 
+	When database access is required, an existing connection from the pool is used and 
+	a new connection is opened only when there are no available connection in the 
+	connection pool. 
+	After a connection is used, the connection is not closed but added to the pool of
+	 connections for reuse. The connection times out after some idle time. So, if the 
+	 traffic reduces, the number of connections in the connection pool will reduce I suppose.
+	 	
+	Connection Pooling reduces the average time for a database connection to be	established.
+	 It is also much less resource intensive.
+	
+	Changes have to be made in the web.xml of the application and context.xml of the Server.
+	
+	
+	The connection pool is created/configured in the init method. It needs some cryptic code.
+		
+	Another fun fact is that a connection pool is application independent. 
+	The connection pool is shared across applications.
+	
+	Finally in the doGet/doPost method, you do ds.getConnection() whihc gets a connection 
+	from the connection pool. if no connection is available in the connection pool then,
+	 a new connection is created.
+	
+	
+	
+
+	
+	

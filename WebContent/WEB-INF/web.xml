@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>11-Ecommerce-WebApp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Connect</servlet-name>
+    <servlet-class>demo.Connect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connect</servlet-name>
+    <url-pattern>/Connect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DataSourceDemo</servlet-name>
+    <servlet-class>demo.DataSourceDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DataSourceDemo</servlet-name>
+    <url-pattern>/DataSourceDemo</url-pattern>
+  </servlet-mapping>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/ecommerce_web</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <servlet>
+    <description></description>
+    <display-name>Controller</display-name>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/Controller</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>gghg</display-name>
+    <servlet-name>gghg</servlet-name>
+    <servlet-class>demo.gghg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gghg</servlet-name>
+    <url-pattern>/gghg</url-pattern>
+  </servlet-mapping>
+</web-app>
