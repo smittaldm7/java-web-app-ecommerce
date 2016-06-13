@@ -5,8 +5,6 @@ import java.util.List;
 
 
 public class Order {
-	
-	
 	int id;	
 	Timestamp date;
 	float totalBillAmount=0;

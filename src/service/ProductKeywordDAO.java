@@ -39,6 +39,27 @@ Connection conn;
 	return status;
 	
 	}
+	//only for unit test
+	public ProductKeyword getProductKeyword(int productID, int keywordID) throws SQLException {
+		
+		PreparedStatement p = conn
+				.prepareStatement("select * from ProductKeywordRelationship where Product_Id "
+						+ "= ? and Keyword_Id = ?");
+
+		p.setInt(1, productID);
+		p.setInt(2, keywordID);
+		
+		ResultSet rs = p.executeQuery();
+
+		rs.next();
+		
+		ProductKeyword productKeyword = new ProductKeyword(rs.getInt(2),rs.getInt(3));
+		
+		p.close();
+		
+		return productKeyword;
+
+	}
 
 	public List<Product> getProductFromSearchString(String searchString) throws SQLException {
 		//Connection conn = Database.getInstance().getConnection();
@@ -65,5 +86,7 @@ Connection conn;
 		
 		
 	}
+
+	
 
 }

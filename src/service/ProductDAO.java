@@ -54,6 +54,7 @@ public class ProductDAO {
 		return id;
 	}
 
+	/*
 	public List<SupplierProduct> getProductSuppliers(String productName) throws SQLException {
 
 		
@@ -81,7 +82,7 @@ public class ProductDAO {
 		
 		return productSuppliersList;
 	}
-
+	*/
 	public List<Product> getProducts() throws SQLException {
 		List<Product> products = new ArrayList<>();
 		
@@ -101,8 +102,7 @@ public class ProductDAO {
 		}
 		
 		return products;
-	}
-	
+	}	
 
 
 

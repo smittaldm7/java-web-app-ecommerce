@@ -31,6 +31,7 @@ public class SupplierDAO {
 		
 		return status;
 	}
+	
 
 	public int getSupplierIDFromName(String name) throws SQLException 
 	{
@@ -52,5 +53,26 @@ public class SupplierDAO {
 			
 			return id;
 	}
-
+	
+	//for unit test of addSupplier
+	public Supplier getSupplierFromName(String name) throws SQLException 
+	{
+		//Connection conn = Database.getInstance().getConnection();
+		
+		PreparedStatement p = conn
+				.prepareStatement("select * from supplier where name = ?");
+		
+		p.setString(1,name);
+		
+		
+		ResultSet rs = p.executeQuery();
+		
+		rs.next();
+		
+		Supplier supplier = new Supplier( rs.getString(2),rs.getString(3)); 
+		
+		p.close();
+			
+		return supplier;
+	}
 }
